@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShopLite — Онлайн‑магазин</title>
+  <meta name="description" content="Лендинг для продажи товаров в интернете. Каталог, преимущества, оформление заказа через email/мессенджер.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1221;--card:#161934;--text:#eef1ff;--muted:#b7bce7;
+      --brand:#7c3aed;--brand2:#22d3ee;--ok:#10b981;--warn:#f59e0b;
+      --radius:18px;--shadow:0 12px 30px rgba(0,0,0,.35)
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:
+      radial-gradient(1200px 800px at -10% -10%,rgba(124,58,237,.25),transparent 50%),
+      radial-gradient(900px 600px at 110% 10%,rgba(34,211,238,.15),transparent 50%),var(--bg);
+      color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1120px;margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:700}
+    .badge{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;box-shadow:var(--shadow)}
+    nav a{opacity:.9;margin-left:18px}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:26px 0}
+    .hero h1{font-size:46px;line-height:1.05;margin:0 0 10px}
+    .hero p{margin:0 0 18px;color:var(--muted)}
+    .btn{padding:12px 18px;border-radius:14px;border:1px solid transparent;display:inline-flex;align-items:center;gap:10px;font-weight:600;transition:.25s;cursor:pointer}
+    .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand2))}
+    .btn-ghost{border:1px solid #2a2d47;background:#141733}
+    .btn:hover{filter:brightness(1.08)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+    .thumb{height:180px;border-radius:14px;background:#10132a;border:1px solid rgba(255,255,255,.08);display:grid;place-items:center;font-size:14px;color:var(--muted)}
+    .toolbar{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0 22px}
+    input,select{padding:10px 12px;border-radius:12px;border:1px solid #2a2d47;background:#11142d;color:var(--text)}
+    .product{display:flex;flex-direction:column;gap:12px}
+    .price{display:flex;align-items:center;gap:10px}
+    .price b{font-size:18px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;padding:5px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.14);opacity:.9}
+    .cart-fab{position:fixed;right:18px;bottom:18px;background:linear-gradient(135deg,var(--brand),var(--brand2));padding:12px 16px;border-radius:16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px;cursor:pointer;z-index:30}
+    .drawer{position:fixed;right:0;top:0;height:100dvh;width:380px;max-width:100%;background:#0e1126;border-left:1px solid rgba(255,255,255,.08);transform:translateX(110%);transition:.35s;padding:18px;z-index:40}
+    .drawer.open{transform:translateX(0)}
+    .cart-item{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;margin:8px 0;padding:8px;border-radius:12px;background:#121536}
+    .qty{display:flex;align-items:center;gap:8px}
+    .qty button{width:26px;height:26px;border-radius:8px;border:1px solid #2a2d47;background:#141733;color:var(--text);cursor:pointer}
+    .total{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:12px;border-top:1px dashed rgba(255,255,255,.12)}
+    footer{opacity:.8;padding:30px 0;color:var(--muted)}
+    @media (max-width:960px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.hero h1{font-size:36px}}
+    @media (max-width:640px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="container">
+    <div class="logo"><div class="badge">🛍️</div><div>ShopLite</div></div>
+    <nav>
+      <a href="#catalog">Каталог</a>
+      <a href="#benefits">Преимущества</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>Современный лендинг для продажи товаров онлайн</h1>
+        <p>Готовый к публикации на GitHub Pages. Лёгкий, быстрый и удобный для клиентов: каталог, мини‑корзина и оформление заказа через email или мессенджер.</p>
+        <div class="toolbar">
+          <input id="q" placeholder="Поиск по названию…" />
+          <select id="cat">
+            <option value="">Все категории</option>
+          </select>
+          <button class="btn btn-primary" onclick="scrollToCatalog()">Перейти к каталогу</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 8px">Как это работает</h3>
+        <ol style="margin:0 0 0 18px;color:var(--muted)">
+          <li>Редактируете список товаров внизу файла (массив <code>PRODUCTS</code>).</li>
+          <li>Публикуете страницу на GitHub Pages.</li>
+          <li>Получаете заявки на email или в Telegram.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="benefits" class="card">
+      <h2>Преимущества</h2>
+      <ul style="margin:0 0 6px 18px;color:var(--muted)">
+        <li>Статический сайт — быстро, безопасно и бесплатно</li>
+        <li>Поиск, фильтр и удобная витрина</li>
+        <li>Мини‑корзина без бэкенда</li>
+        <li>Оформление заказа одним кликом</li>
+      </ul>
+    </section>
+
+    <section id="catalog" style="margin-top:24px">
+      <h2>Каталог</h2>
+      <div id="products" class="grid"></div>
+    </section>
+
+    <section id="contact" class="card" style="margin-top:18px">
+      <h2>Контакты</h2>
+      <p>Пишите нам: <a href="mailto:shop@example.com">shop@example.com</a> · <a href="https://t.me/your_shop" target="_blank">Telegram</a></p>
+      <p style="color:var(--muted)">Замените контакты на свои перед публикацией.</p>
+    </section>
+  </main>
+
+  <div class="cart-fab" onclick="toggleCart()">🛒 <span id="cartCount">0</span> · <b id="cartSum">0</b> ₸</div>
+  <aside id="drawer" class="drawer" aria-label="Корзина">
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <h3>Корзина</h3>
+      <button class="btn btn-ghost" onclick="toggleCart()">Закрыть</button>
+    </div>
+    <div id="cartList"></div>
+    <div class="total">
+      <b>Итого:</b>
+      <b id="total">0 ₸</b>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+      <button class="btn btn-primary" onclick="checkoutEmail()">Оформить (Email)</button>
+      <a class="btn btn-ghost" id="checkoutTg" target="_blank">Оформить (Telegram)</a>
+    </div>
+  </aside>
+
+  <footer class="container">© <span id="y"></span> ShopLite. Лендинг для GitHub Pages.</footer>
+
+  <script>
+    const PRODUCTS = [
+      {id:"p1", title:"Футболка базовая", price:1500, img:"", cat:"Одежда", tags:["хит","новинка"]},
+      {id:"p2", title:"Худи oversize", price:2000, img:"", cat:"Одежда", tags:["теплое"]},
+      {id:"p3", title:"Кружка керамическая", price:1200, img:"", cat:"Дом", tags:["подарок"]},
+      {id:"p4", title:"Рюкзак городской", price:1500, img:"", cat:"Аксессуары", tags:["унисекс"]},
+      {id:"p5", title:"Пауэрбанк 10 000 mAh", price:1850, img:"", cat:"Электроника", tags:["полезное"]},
+      {id:"p6", title:"Носки набор (5 пар)", price:1500, img:"", cat:"Одежда", tags:["выгодно"]}
+    ];
+
+    // Инициализация каталога
+    const $products = document.getElementById('products');
+    const $cat = document.getElementById('cat');
+    const $q = document.getElementById('q');
+
+    const cats = Array.from(new Set(PRODUCTS.map(p=>p.cat)));
+    cats.forEach(c=>{ const opt=document.createElement('option'); opt.value=c; opt.textContent=c; $cat.appendChild(opt); });
+
+    function renderProducts(){
+      $products.innerHTML='';
+      const term = ($q.value||'').toLowerCase();
+      const fcat = $cat.value||'';
+      PRODUCTS.filter(p=>
+        (!fcat || p.cat===fcat) && (!term || p.title.toLowerCase().includes(term))
+      ).forEach(p=>{
+        const card = document.createElement('div');
+        card.className='card product';
+        const img = document.createElement('div');
+        img.className='thumb';
+        img.textContent = p.img? '' : 'Предпросмотр';
+        if(p.img){ img.style.backgroundImage=`url(${p.img})`; img.style.backgroundSize='cover'; img.style.backgroundPosition='center'; }
+        const h3 = document.createElement('b'); h3.textContent=p.title;
+        const tags = document.createElement('div'); tags.className='tags';
+        p.tags.forEach(t=>{ const s=document.createElement('span'); s.className='tag'; s.textContent=t; tags.appendChild(s); });
+        const price = document.createElement('div'); price.className='price'; price.innerHTML=`<b>${p.price} ₸</b>`;
+        const btn = document.createElement('button'); btn.className='btn btn-primary'; btn.textContent='В корзину'; btn.onclick=()=>addToCart(p);
+        card.append(img,h3,tags,price,btn); $products.appendChild(card);
+      });
+    }
+
+    $q.addEventListener('input', renderProducts);
+    $cat.addEventListener('change', renderProducts);
+
+    // Корзина
+    const cart = new Map();
+    const $drawer = document.getElementById('drawer');
+    const $cartList = document.getElementById('cartList');
+    const $total = document.getElementById('total');
+    const $cartCount = document.getElementById('cartCount');
+    const $cartSum = document.getElementById('cartSum');
+
+    function addToCart(p){
+      const item = cart.get(p.id) || {product:p, qty:0};
+      item.qty += 1;
+      cart.set(p.id, item);
+      updateCartUI();
+    }
+    function changeQty(id, delta){
+      const item = cart.get(id); if(!item) return;
+      item.qty += delta; if(item.qty<=0) cart.delete(id);
+      updateCartUI();
+    }
+    function updateCartUI(){
+      $cartList.innerHTML='';
+      let sum=0, count=0;
+      cart.forEach(({product, qty})=>{
+        sum += product.price*qty; count += qty;
+        const row = document.createElement('div'); row.className='cart-item';
+        row.innerHTML = `<div>${product.title}</div>
+                         <div class="qty">
+                           <button onclick="changeQty('${product.id}',-1)">-</button>
+                           <span>${qty}</span>
+                           <button onclick="changeQty('${product.id}',1)">+</button>
+                         </div>
+                         <div><b>${product.price*qty} ₸</b></div>`;
+        $cartList.appendChild(row);
+      });
+      $total.textContent = sum+" ₸";
+      $cartCount.textContent = count;
+      $cartSum.textContent = sum;
+      updateTgLink();
+    }
+    function toggleCart(){ $drawer.classList.toggle('open'); }
+
+    function checkoutEmail(){
+      const lines=[]; cart.forEach(({product, qty})=>lines.push(`${product.title} × ${qty} = ${product.price*qty} ₸`));
+      const body = encodeURIComponent(`Здравствуйте! Хочу оформить заказ:\n\n${lines.join('\n')}\n\nИтого: ${$total.textContent}\n\nИмя: ...\nТелефон: ...\nАдрес/Способ доставки: ...`);
+      window.location.href = `mailto:shop@example.com?subject=Заказ с сайта&body=${body}`;
+    }
+
+    // Telegram оформление
+    const $tg = document.getElementById('checkoutTg');
+    function updateTgLink(){
+      const lines=[]; cart.forEach(({product, qty})=>lines.push(`${product.title} × ${qty} = ${product.price*qty} ₸`));
+      const text = encodeURIComponent(`Хочу оформить заказ:\n${lines.join('\n')}\nИтого: ${$total.textContent}`);
+      $tg.href = `https://t.me/share/url?url=&text=${text}`;
+    }
+
+    function scrollToCatalog(){ document.getElementById('catalog').scrollIntoView({behavior:'smooth'}); }
+
+    // Init
+    document.getElementById('y').textContent = new Date().getFullYear();
+    renderProducts(); updateCartUI();
+  </script>
+  <script type="text/javascript">
+(function(d, w, s) {
+    var widgetHash = 'dxFBZ7oJa8GH0YnR53LJ', bch = d.createElement(s); bch.type = 'text/javascript'; bch.async = true;
+    bch.src = '//widgets.binotel.com/chat/widgets/' + widgetHash + '.js';
+    var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(bch, sn);
+})(document, window, 'script');
+</script>
+</body>
+</html>
